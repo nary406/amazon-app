@@ -1,20 +1,34 @@
-import MovieSlider from '../MoviesSlider'
+// Write your code here
+import MoviesSlider from '../MoviesSlider'
+
+import './index.css'
+
+const actionMovie = 'ACTION'
+const comedyMovie = 'COMEDY'
 
 const PrimeVideo = props => {
   const {moviesList} = props
-  const actionMovies = moviesList.filter(item => item.categoryId === 'ACTION')
-  const comedyMovies = moviesList.filter(item => item.categoryId === 'COMEDY')
+  const actionMoviesList = moviesList.filter(
+    movie => movie.categoryId === actionMovie,
+  )
+
+  const comedyMoviesList = moviesList.filter(
+    movie => movie.categoryId === comedyMovie,
+  )
 
   return (
-    <div>
+    <div className="prime-video-container">
       <img
+        className="image"
         src="https://assets.ccbp.in/frontend/react-js/prime-video-img.png"
         alt="prime video"
-        style={{width: '100%'}}
       />
-      <h1>Action Movies</h1>
-      <MovieSlider movieDetails={actionMovies} />
-      <h1>Comedy Movies</h1>
+      <div className="movies-container">
+        <h1 className="movies-heading">Action Movies</h1>
+        <MoviesSlider moviesList={actionMoviesList} />
+        <h1 className="movies-heading">Comedy Movies </h1>
+        <MoviesSlider moviesList={comedyMoviesList} />
+      </div>
     </div>
   )
 }
